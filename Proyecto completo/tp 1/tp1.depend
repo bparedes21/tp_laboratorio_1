@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1599002637 source:e:\laboratorio\tp1\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1599258626 source:d:\git\curso-de-ingreso\tp_laboratorio_1-\proyecto completo\tp 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1599140297 d:\git\curso-de-ingreso\tp_laboratorio_1-\proyecto completo\tp 1\funcion_sumar.h
+
+1599140307 d:\git\curso-de-ingreso\tp_laboratorio_1-\proyecto completo\tp 1\funcion_restar.h
+
+1599141067 d:\git\curso-de-ingreso\tp_laboratorio_1-\proyecto completo\tp 1\funcion_multiplicar.h
+
+1599144865 d:\git\curso-de-ingreso\tp_laboratorio_1-\proyecto completo\tp 1\funcion_dividir.h
+
+1599239903 d:\git\curso-de-ingreso\tp_laboratorio_1-\proyecto completo\tp 1\funciones.h
+
+1599257461 source:d:\git\curso-de-ingreso\tp_laboratorio_1-\proyecto completo\tp 1\funciones.c
+	<stdio.h>
+	"funciones.h"
+	"casos.h"
+
+1599224246 source:d:\git\curso-de-ingreso\tp_laboratorio_1-\proyecto completo\tp 1\casos.c
+
+1599224642 d:\git\curso-de-ingreso\tp_laboratorio_1-\proyecto completo\tp 1\casos.h
+
