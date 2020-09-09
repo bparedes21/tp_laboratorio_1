@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "funciones.h"
-#include "casos.h"
+
 //estilo doxygen
 
 

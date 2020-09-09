@@ -1,6 +1,0 @@
-#ifndef CASOS_H_INCLUDED
-#define CASOS_H_INCLUDED
-
-
-
-#endif // CASOS_H_INCLUDED
