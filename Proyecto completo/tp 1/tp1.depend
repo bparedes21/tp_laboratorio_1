@@ -27,9 +27,14 @@
 
 1599224642 d:\git\curso-de-ingreso\tp_laboratorio_1-\proyecto completo\tp 1\casos.h
 
-1599688201 source:d:\git\tp_laboratorio_1\proyecto completo\tp 1\funciones.c
+1599689812 source:d:\git\tp_laboratorio_1\proyecto completo\tp 1\funciones.c
 	<stdio.h>
 	"funciones.h"
 
-1599521179 d:\git\tp_laboratorio_1\proyecto completo\tp 1\funciones.h
+1599689598 d:\git\tp_laboratorio_1\proyecto completo\tp 1\funciones.h
+
+1599689812 source:d:\git\tp_laboratorio_1\proyecto completo\tp 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
 

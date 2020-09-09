@@ -38,6 +38,7 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="opcion_2_todas_las_operaciones.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

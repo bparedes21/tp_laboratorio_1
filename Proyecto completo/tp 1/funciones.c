@@ -22,6 +22,26 @@ int pedirNumero(void)
 *\param  el segundo parametro de la funcion es numeros de tipo entero
 *\return el valor que retorna es el resultado de la suma
 */
+int validarSeleccionMenu(int calcularTodoOUno)
+{
+    while(calcularTodoOUno!=1 && calcularTodoOUno!=2)
+   {
+        printf("ERROR para calcular TODAS las operaciones: \n");
+        printf("Ingrese 1 \n");
+        printf("Para calcular SOLO 1 operacion:  \n");
+        printf("Ingrese 2 \n");
+        scanf("%d",&calcularTodoOUno);
+   }
+   return calcularTodoOUno;
+}
+
+
+/*
+*\brief la funcion va a sumar dos numeros y guardar el resultado en una variable de tipo entero
+*\param   el primer parametro de la funcion es numeros de tipo entero
+*\param  el segundo parametro de la funcion es numeros de tipo entero
+*\return el valor que retorna es el resultado de la suma
+*/
 int validarSeleccion(int seleccion)
 {
     while(seleccion<1 || seleccion>5)
