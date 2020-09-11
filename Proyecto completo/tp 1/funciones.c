@@ -8,7 +8,6 @@ int pedirNumero(void)
 {    int numeroIngresado;
      int numero;
      numeroIngresado=0;
-     fflush(stdin);
      scanf("%d",&numero);
 
      numeroIngresado=numero;
@@ -128,3 +127,34 @@ factorial(int xoy)
     resultado=multiplicacionFactorial;
     return resultado;
  }
+/*
+*\brief permite que se ingrese un numero y lo valida entre 1 y 5
+*\param  no recibe paramentros
+*\return el valor que retorna el numero ingresado con scanf
+*/
+
+ int ingresarOpcionMenu(void)
+{
+    int numeroIngresado;
+    scanf("%d",&numeroIngresado);
+
+    while(numeroIngresado<1 || numeroIngresado>5)
+    {   printf("ERROR de opciones: \n");
+        printf("Menu de opciones: \n");
+        printf("1. Ingresar 1er operando (A=x) \n");
+        printf("2. Ingresar 2do operando (B=y) \n");
+        printf("3. Calcular todas las operaciones \n");
+        printf(" a) Calcular la suma (A+B) \n");
+        printf(" b) Calcular la resta (A-B) \n");
+        printf(" c) Calcular la division (A/B) \n");
+        printf(" d) Calcular la multiplicacion (A*B) \n");
+        printf(" e) Calcular el factorial (A!) \n");
+        printf("4. Informar resultados \n");
+        printf("5. Salir \n" );
+        scanf("%d",&numeroIngresado);
+    }
+
+
+    return numeroIngresado;
+
+}

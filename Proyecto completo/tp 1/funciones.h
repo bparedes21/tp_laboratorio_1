@@ -9,4 +9,5 @@ int factorial(int xoy);
 int validarSeleccion(int seleccion);
 int pedirNumero(void);
 int validarSeleccionMenu(int calcularTodoOUno);
+int ingresarOpcionMenu(void);
 #endif // FUNCIONES_H_INCLUDED

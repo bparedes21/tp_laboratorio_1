@@ -42,6 +42,7 @@ hacer uso de dichas funciones para resolver la lógica del programa.
 
 int main()
 {   setbuf(stdout, NULL);
+    int ingresarOpcion;
     int valorNumeroIngresado;
     float resultadoF;
     int A;
@@ -53,118 +54,104 @@ int main()
     int factorialA;
     int factorialB;
     int operadorSeleccionado;
-    char ingreseSoN;
     int seleccionOperacion;
 
-        ingreseSoN='s';
 
-        while(ingreseSoN=='s')
-        {   system("cls");
-            //1. Ingresar 1er operando
-            printf("Ingresar 1er operando \n");
-            A=pedirNumero();
+        printf("Menu de opciones: \n");
+        printf("1. Ingresar 1er operando (A=x) \n");
+        printf("2. Ingresar 2do operando (B=y) \n");
+        printf("3. Calcular todas las operaciones \n");
+        printf(" a) Calcular la suma (A+B) \n");
+        printf(" b) Calcular la resta (A-B) \n");
+        printf(" c) Calcular la division (A/B) \n");
+        printf(" d) Calcular la multiplicacion (A*B) \n");
+        printf(" e) Calcular el factorial (A!) \n");
+        printf("4. Informar resultados \n" );
+        printf("5. Salir \n" );
 
-            //2. Ingresar 2do operando
-            printf("Ingresar 2do operando \n");
-            B= pedirNumero();
+        ingresarOpcion=ingresarOpcionMenu();
+        while(ingresarOpcion!=5)
+        {
 
-            printf("A=%d \n",A);
-            printf("B=%d \n",B);
-            printf("Para calcular todas las operaciones: \n");
-            printf("Ingrese 1 \n");
-            printf("Para calcular solo 1 operacion:  \n");
-            printf("Ingrese 2 \n");
-            scanf("%d",&seleccionOperacion);
-            seleccionOperacion=validarSeleccionMenu(seleccionOperacion);
-            if(seleccionOperacion==1)
+
+            switch(ingresarOpcion)
             {
-                sumaAyB=sumar(A,B);
-                printf("La suma A+B es: \n");
-                printf("%d + %d = %d \n",A,B,sumaAyB);
-
-                restaAyB=restar(A,B);
-                printf("La resta A-B es: \n");
-                printf("%d - %d = %d \n",A,B,restaAyB);
-
-                multiplicacionAyB=multiplicar(A,B);
-                printf("La multiplicacion A*B es: \n");
-                printf("%d * %d = %d \n",A,B,multiplicacionAyB);
-
-                divisionAyB=dividir(A,B,&resultadoF);
-                if(divisionAyB==1)
-                {
-                    printf("La division A/B es:  \n");
-                    printf("%d / %d = %.2f \n",A,B,resultadoF);
+                case 1:
+                    //1. Ingresar 1er operando
+                    printf("Ingresar 1er operando \n");
+                    A=pedirNumero();
+                    break;
+                case 2:
+                    //2. Ingresar 2do operando
+                    printf("Ingresar 2do operando \n");
+                    B= pedirNumero();
+                    break;
+                case 3:
+                    sumaAyB=sumar(A,B);
+                    restaAyB=restar(A,B);
+                    multiplicacionAyB=multiplicar(A,B);
+                    divisionAyB=dividir(A,B,&resultadoF);
+                    factorialA=factorial(A);
+                    factorialB=factorial(B);
+                    break;
+                case 5:
+                    system("cls");
+                    ingresarOpcion==5;
+                break;
+            }
+                if(ingresarOpcion==1)
+                {   printf("1er operando INGRESADO \n",A);
+                    printf("A=%d \n",A);
+                    printf("Menu de opciones: \n");
+                    printf("2. Ingresar 2do operando (B=%d)\n",B );
                 }
                 else
                 {
-                    if(divisionAyB==-1)
+                    if(ingresarOpcion==2)
+                    {   printf("2do operando INGRESADO \n",A);
+                        printf("B=%d \n",B);
+                    }
+                    else
                     {
-                        printf("No se puede dividir \n");
+                        if(ingresarOpcion==3)
+                        {
+                            printf("Menu de opciones: \n");
+                            printf("Calcular la suma %d+%d  \n",A,B);
+                            printf("Calcular la resta %d-%d  \n",A,B);
+                            printf("Calcular la multiplicacion %d*%d  \n",A,B);
+                            printf("Calcular la division %d/%d =\n",A,B);
+                            printf("Calcular el factorial de A es: %d y El factorial de B es: %d \n",A,B);
+                            printf("4. Informar resultados \n" );
+                            printf("5. Salir \n" );
+                        }
+                        else
+                        {
+                            if(ingresarOpcion==4)
+                            {
+                                printf("El resultado de %d + %d = %d \n",A,B,sumaAyB);
+                                printf("El resultado de %d - %d = %d \n",A,B,restaAyB);
+                                printf("El resultado de %d * %d = %d \n",A,B,multiplicacionAyB);
+                                printf("El resultado de %d / %d = %d \n",A,B,divisionAyB);
+                                printf("El resultado de factorial de A es: %d \n", factorialA);
+                                printf("El resultado de factorial de B es: %d \n", factorialB);
+                            }
+                        }
                     }
                 }
 
-                factorialA=factorial(A);
-                factorialB=factorial(B);
-                printf("El factorial de A es: %d y El factorial de B es: %d \n",factorialA,factorialB);
-            }
-            else
+            if(ingresarOpcion!=3&&ingresarOpcion!=4)
             {
-                if(seleccionOperacion==2)
-                {
-                printf("Que operacion desea realizar?  \n");
-                printf("Ingrese 1 para SUMA  \n");
-                printf("Ingrese 2 para RESTA \n");
-                printf("Ingrese 3 para MULTIPLICACION \n");
-                printf("Ingrese 4 para DIVICION  \n");
-                printf("Ingrese 5 para FACTORIAL  \n");
-                scanf("%d",&operadorSeleccionado);
-                operadorSeleccionado=validarSeleccion(operadorSeleccionado);
-                    switch(operadorSeleccionado)
-                    {
-                        case 1:
-                            sumaAyB=sumar(A,B);
-                            printf("La suma A+B es: \n");
-                            printf("%d + %d = %d \n",A,B,sumaAyB);
-                            break;
-                        case 2:
-                            restaAyB=restar(A,B);
-                            printf("La resta A-B es: \n");
-                            printf("%d - %d = %d \n",A,B,restaAyB);
-                            break;
-                        case 3:
-                            multiplicacionAyB=multiplicar(A,B);
-                            printf("La multiplicacion A*B es: \n");
-                            printf("%d * %d = %d \n",A,B,multiplicacionAyB);
-                            break;
-                        case 4:
-                            divisionAyB=dividir(A,B,&resultadoF);
-                            if(divisionAyB==1)
-                            {
-                                printf("La division A/B es:  \n");
-                                printf("%d / %d = %.2f \n",A,B,resultadoF);
-                            }
-                            else
-                            {
-                                if(divisionAyB==-1)
-                                {
-                                    printf("No se puede dividir \n");
-                                }
-                            }
-                            break;
-                        case 5:
-                            factorialA=factorial(A);
-                            factorialB=factorial(B);
-                            printf("El factorial de A es: %d y El factorial de B es: %d  \n",factorialA,factorialB);
-                            break;
-                    }
-                }
+                printf("3. Calcular todas las operaciones \n");
+                printf(" a) Calcular la suma (%d+%d) \n",A,B);
+                printf(" b) Calcular la resta (%d-%d) \n",A,B);
+                printf(" c) Calcular la division (%d/%d) \n",A,B);
+                printf(" d) Calcular la multiplicacion (%d*%d) \n",A,B);
+                printf(" e) Calcular el factorial (%d!) \n",A);
+                printf(" e) Calcular el factorial (%d!) \n",B);
+                printf("4. Informar resultados \n" );
+                printf("5. Salir \n" );
             }
-
-
-        printf("Desea realizar otra operacion? ingrese s/n \n");
-        fflush(stdin);
-        scanf("%c",&ingreseSoN);
+        ingresarOpcion=ingresarOpcionMenu();
         }
 
     return 0;
