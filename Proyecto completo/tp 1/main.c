@@ -55,7 +55,14 @@ int main()
     int factorialB;
     int operadorSeleccionado;
     int seleccionOperacion;
-
+    A=0;
+    B=0;
+    sumaAyB=0;
+    multiplicacionAyB=0;
+    restaAyB=0;
+    divisionAyB=0;
+    factorialA=0;
+    factorialB=0;
 
         printf("Menu de opciones: \n");
         printf("1. Ingresar 1er operando (A=x) \n");
@@ -80,66 +87,61 @@ int main()
                     //1. Ingresar 1er operando
                     printf("Ingresar 1er operando \n");
                     A=pedirNumero();
+                    printf("1er operando INGRESADO \n",A);
+                    printf("A=%d \n",A);
+                    printf("Menu de opciones: \n");
+                    printf("2. Ingresar 2do operando (B=%d)\n",B );
                     break;
                 case 2:
                     //2. Ingresar 2do operando
                     printf("Ingresar 2do operando \n");
                     B= pedirNumero();
+                    printf("2do operando INGRESADO \n",A);
+                    printf("B=%d \n",B);
                     break;
                 case 3:
+                    printf("Opciones elegida: 3 \n");
                     sumaAyB=sumar(A,B);
                     restaAyB=restar(A,B);
                     multiplicacionAyB=multiplicar(A,B);
                     divisionAyB=dividir(A,B,&resultadoF);
                     factorialA=factorial(A);
                     factorialB=factorial(B);
+                    printf("Calcular la suma %d+%d  \n",A,B);
+                    printf("Calcular la resta %d-%d  \n",A,B);
+                    printf("Calcular la multiplicacion %d*%d  \n",A,B);
+                    printf("Calcular la division %d/%d =\n",A,B);
+                    printf("Calcular el factorial de A es: %d y El factorial de B es: %d \n",A,B);
+                    printf("Menu de opciones: \n");
+                    printf("4. Informar resultados \n" );
+                    printf("5. Salir \n" );
+                    break;
+                case 4:
+                    printf("Opciones elegida: 4 \n");
+                    printf("El resultado de %d + %d = %d \n",A,B,sumaAyB);
+                    printf("El resultado de %d - %d = %d \n",A,B,restaAyB);
+                    printf("El resultado de %d * %d = %d \n",A,B,multiplicacionAyB);
+                    printf("El resultado de %d / %d = %d \n",A,B,divisionAyB);
+                    printf("El resultado de factorial de A es: %d \n", factorialA);
+                    printf("El resultado de factorial de B es: %d \n", factorialB);
+                    printf("Menu de opciones: \n");
+                    printf("1. Ingresar 1er operando (A=x) \n");
+                    printf("2. Ingresar 2do operando (B=y) \n");
+                    printf("3. Calcular todas las operaciones \n");
+                    printf(" a) Calcular la suma (A+B) \n");
+                    printf(" b) Calcular la resta (A-B) \n");
+                    printf(" c) Calcular la division (A/B) \n");
+                    printf(" d) Calcular la multiplicacion (A*B) \n");
+                    printf(" e) Calcular el factorial (A!) \n");
+                    printf("4. Informar resultados \n" );
+                    printf("5. Salir \n" );
                     break;
                 case 5:
                     system("cls");
                     ingresarOpcion==5;
-                break;
+                   break;
             }
-                if(ingresarOpcion==1)
-                {   printf("1er operando INGRESADO \n",A);
-                    printf("A=%d \n",A);
-                    printf("Menu de opciones: \n");
-                    printf("2. Ingresar 2do operando (B=%d)\n",B );
-                }
-                else
-                {
-                    if(ingresarOpcion==2)
-                    {   printf("2do operando INGRESADO \n",A);
-                        printf("B=%d \n",B);
-                    }
-                    else
-                    {
-                        if(ingresarOpcion==3)
-                        {
-                            printf("Menu de opciones: \n");
-                            printf("Calcular la suma %d+%d  \n",A,B);
-                            printf("Calcular la resta %d-%d  \n",A,B);
-                            printf("Calcular la multiplicacion %d*%d  \n",A,B);
-                            printf("Calcular la division %d/%d =\n",A,B);
-                            printf("Calcular el factorial de A es: %d y El factorial de B es: %d \n",A,B);
-                            printf("4. Informar resultados \n" );
-                            printf("5. Salir \n" );
-                        }
-                        else
-                        {
-                            if(ingresarOpcion==4)
-                            {
-                                printf("El resultado de %d + %d = %d \n",A,B,sumaAyB);
-                                printf("El resultado de %d - %d = %d \n",A,B,restaAyB);
-                                printf("El resultado de %d * %d = %d \n",A,B,multiplicacionAyB);
-                                printf("El resultado de %d / %d = %d \n",A,B,divisionAyB);
-                                printf("El resultado de factorial de A es: %d \n", factorialA);
-                                printf("El resultado de factorial de B es: %d \n", factorialB);
-                            }
-                        }
-                    }
-                }
-
-            if(ingresarOpcion!=3&&ingresarOpcion!=4)
+            if(ingresarOpcion!=3&&ingresarOpcion!=4&&ingresarOpcion!=5)
             {
                 printf("3. Calcular todas las operaciones \n");
                 printf(" a) Calcular la suma (%d+%d) \n",A,B);
@@ -148,6 +150,7 @@ int main()
                 printf(" d) Calcular la multiplicacion (%d*%d) \n",A,B);
                 printf(" e) Calcular el factorial (%d!) \n",A);
                 printf(" e) Calcular el factorial (%d!) \n",B);
+                printf("Menu de opciones: \n");
                 printf("4. Informar resultados \n" );
                 printf("5. Salir \n" );
             }
