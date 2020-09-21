@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1600660923 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Array_de_Employee.h"
+	"Otras_Funciones.h"
+
+1600657709 d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\array_de_employee.h
+
+1600657736 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\funciones_employee.c
+	<stdio.h>
+	<stdlib.h>
+	"Array_de_Employee.h"
+	"Otras_Funciones.h"
+
+1600660960 d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\otras_funciones.h
+
+1600657580 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\otras_funciones.c
+	<stdio.h>
+	<stdlib.h>
+	"Array_de_Employee.h"
+	"Otras_Funciones.h"
+
