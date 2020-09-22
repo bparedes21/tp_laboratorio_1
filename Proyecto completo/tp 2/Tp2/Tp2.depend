@@ -1,23 +1,26 @@
 # depslib dependency file v1.0
-1600660923 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\main.c
+1600746075 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"Array_de_Employee.h"
 	"Otras_Funciones.h"
 
-1600657709 d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\array_de_employee.h
+1600746075 d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\array_de_employee.h
 
-1600657736 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\funciones_employee.c
+1600746788 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\funciones_employee.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"Array_de_Employee.h"
 	"Otras_Funciones.h"
 
-1600660960 d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\otras_funciones.h
+1600745699 d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\otras_funciones.h
 
-1600657580 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\otras_funciones.c
+1600746075 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\otras_funciones.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"Array_de_Employee.h"
 	"Otras_Funciones.h"
 

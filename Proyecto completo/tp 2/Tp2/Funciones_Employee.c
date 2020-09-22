@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Array_de_Employee.h"
 #include "Otras_Funciones.h"
 #define LEN 3
@@ -18,18 +19,19 @@
 */
 int initEmployees(Employee* list, int len)
 {
-/* Para indicar que todas las posiciones del array están vacías, esta función pone la bandera
-(isEmpty) en TRUE en todas las posiciones del array.*/
-  int i;
-  int Error=-1;
-  if(list!=NULL&&len>=0)
-  {   Error=0;
-      for(i=0;i<len;i++)
+    /* Para indicar que todas las posiciones del array están vacías, esta función pone la bandera
+    (isEmpty) en TRUE en todas las posiciones del array.*/
+    int i;
+    int Error=-1;
+    if(list!=NULL&&len>=0)
+    {
+        Error=0;
+        for(i=0; i<len; i++)
         {
-        list[i].isEmpty =TRUE;
+            list[i].isEmpty =TRUE;
         }
-  }
-return Error;
+    }
+    return Error;
 }
 
 //2.2 Función addEmployees
@@ -45,16 +47,30 @@ return Error;
 * \return int Return (-1) if Error [Invalid length or NULL pointer or without
 free space] - (0) if Ok
 **/
+
+
 int addEmployee(Employee* list, int len, int id, char name[],char lastName[],float salary,int sector)
 {
-/*
-Agrega en un array de empleados existente los valores recibidos como parámetro en la primer
-posición libre.
-*/
-return -1;
+    int i;
+    int auxiliar;
+    for(i=0; i<len; i++)
+    {
+        if(i==id)
+        {
+            strcpy(list[i].name,name);
+            strcpy(list[i].lastName,lastName);
+            list[i].salary=salary;
+            list[i].sector=sector;
+            list[i].isEmpty=FALSE;
+
+        }
+    }
+
+
+    return -1;
 }
 
-
+/*
 //2.3 Función findEmployeeById
 
 /** \brief find an Employee by Id en returns the index position in array.
@@ -66,6 +82,7 @@ return -1;
 pointer received or employee not found]
 *
 */
+/*
 int findEmployeeById(Employee* list, int len,int id)
 {
 
@@ -84,7 +101,7 @@ return NULL;
 find a employee] - (0) if Ok
 *
 */
-
+/*
 int removeEmployee(Employee* list, int len, int id)
 {
 
@@ -102,6 +119,8 @@ indicate UP or DOWN order
 * \return int Return (-1) if Error [Invalid length or NULL pointer] - (0) if Ok
 *
 */
+
+/*
 int sortEmployees(Employee* list, int len, int order)
 {
 
@@ -118,8 +137,10 @@ return 0;
 *
 */
 
+/*
 int printEmployees(Employee* list, int length)
 {
 //Imprime el array de empleados de forma encolumnada.
 return 0;
 }
+*/

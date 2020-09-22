@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Array_de_Employee.h"
 #include "Otras_Funciones.h"
 #define LEN 3
@@ -24,44 +25,65 @@ int main()
 {
     Employee list[LEN];
     int returnInitEmployees;
+    int opcionMenu;
+    int newID;
+    int isEmpty;
+    char  name[51];
+    char lastName[51];
+    float salary;
+    int sector;
 
-    int opcionMenu=0;
-    char  nombre[20];
 
     returnInitEmployees=initEmployees(list, LEN);
 
-    opcionMenu=getIntMenu(" Menu de opciones\n Ingrese una opcion\n 1-ALTAS:\n 2-MODIFICAR\n 3-BAJAS\n 4-INFORMAR:\n 5-SALIR \n",list, LEN,opcionMenu);
+    opcionMenu=getIntMenu("Menu de opciones\n Ingrese una opcion\n 1-ALTAS:\n 2-MODIFICAR:\n 3-BAJAS:\n 4-INFORMAR:\n 5-SALIR \n");
+    opcionMenu=numberBetweenOneAndFive(opcionMenu);
+    opcionMenu=compareOptionEqualToOne(opcionMenu);
 
-/*
     do
-    {   opcionMenu=getIntMenu(" Menu de opciones\n Ingrese una opcion\n 1-ALTAS:\n 2-MODIFICAR\n 3-BAJAS\n 4-INFORMAR:\n 5-SALIR \n",list, LEN,opcionMenu);
+    {
         switch (opcionMenu)
         {
         case 1://ALTAS: Se debe permitir ingresar un empleado calculando automáticamente el número
-            addEmployee(list,len, id, name, lastName,float salary,int sector, int isEmpty);
-            break;
-         case 2://MODIFICAR: Se ingresará el Número de Id, permitiendo modificar: o Nombre o Apellido
-            break;
-             case 3://BAJA: Se ingresará el Número de Id y se eliminará el empleado del sistema.
-            break;
-             case 4://4. INFORMAR:
+            newID=newId(list, LEN);
 
-                switch ()
-                {
-                case 1:
-                    break;
-                case 2:
-                    break;
+            printf("Ingrese Nombre \n"); // nombre
+            fflush(stdin);
+            scanf ("%[^\n]",name);
+            printf("Ingrese Apellido \n"); //Apellido
+            fflush(stdin);
+            scanf ("%[^\n]",lastName);
+            printf("Ingrese el salario \n"); // salario
+            scanf ("%f",&salary);
+            printf("Ingrese el sector \n"); //sector
+            scanf ("%d",&salary);
+            addEmployee(list,LEN, newID, name, lastName,salary, sector);
+            break;
+            /*
+             case 2://MODIFICAR: Se ingresará el Número de Id, permitiendo modificar: o Nombre o Apellido
+                break;
+                 case 3://BAJA: Se ingresará el Número de Id y se eliminará el empleado del sistema.
+                break;
+                 case 4://4. INFORMAR:
+
+                    switch ()
+                    {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
 
 
-                // 1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.
-                // 2. Total y promedio de los salarios, y cuántos empleados superan el salario promed
-            break;
-             case 5:
-            break;
+                    // 1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.
+                    // 2. Total y promedio de los salarios, y cuántos empleados superan el salario promed
+                break;
+                 case 5:
+                break;*/
         }
-
-    } while (opcionMenu!=5);*/
+        //opcionMenu=getIntMenu("Menu de opciones\n Ingrese una opcion\n 1-ALTAS:\n 2-MODIFICAR:\n 3-BAJAS:\n 4-INFORMAR:\n 5-SALIR \n");
+        //opcionMenu=numberBetweenOneAndFive(opcionMenu);
+    }
+    while (opcionMenu!=5);
     return 0;
 }
 
