@@ -17,9 +17,11 @@ int newId(Employee* list, int len)
 
       for(i=0;i<len;i++)
         {
-            if(list[i].isEmpty=TRUE)
+            if(list[i].isEmpty==TRUE)
             {
             Id=i;
+            printf("ID , %d \n",Id);
+            break;
             }
         }
       if(Id==-1)
@@ -59,33 +61,71 @@ int compareOptionEqualToOne(int opcionMenu)
     return opcionMenu;
 }
 
-
-
-
-
-char primeraLetraMayuscula(char contieneLetras[])
+float getFloatSalary(char mensaje[])
 {
-    int len;
-    int i;
-    char letra;
-    len= strlen(contieneLetras);
-    for (i=0;i<len;i++)
+    float auxiliar;
+    printf("%s",mensaje);
+    scanf("%f",&auxiliar);
+    return auxiliar;
+}
+int getIntSector(char mensaje[])
+{
+    int auxiliar;
+    printf("%s",mensaje);
+    scanf("%d",&auxiliar);
+    return auxiliar;
+}
+int getIntModificarName(char mensaje[])
+{
+    int auxiliar;
+    printf("%s",mensaje);
+    scanf("%d",&auxiliar);
+    while(auxiliar<1||auxiliar>2)
     {
-        if(i==0)
-        {
-          toupper(contieneLetras[0]);
-         // nameLastName= toupper(nameLastName);
-         // len[i+1]=nameLastName;
-        }
-        else
-        {
-            if(contieneLetras[i]==" ")
-            {
-              toupper(contieneLetras[i+1]);
-
-            }
-        }
-
+        printf("Ingresar numero de Id para modificar");
+        scanf("%d",&auxiliar);
     }
-    return contieneLetras;
+    return auxiliar;
+}
+int getIntNumId(char mensaje[])
+{
+    int auxiliar;
+    printf("%s",mensaje);
+    scanf("%d",&auxiliar);
+    return auxiliar;
+}
+int mostrarId(Employee* list, int len)
+{
+  int i;
+      for(i=0;i<len;i++)
+        {
+         if(list[i].isEmpty==FALSE)
+         {
+          printf("Id: %d, *Nombre: %s, *Apellido: %s, *Sector: %d \n",i, list[i].name, list[i].lastName,list[i].sector);
+         }
+        }
+
+}
+void modificarNombre(Employee* list, int len, int IdOpcion,char name[])
+{
+    int i;
+
+      for(i=0;i<len;i++)
+        {
+         if(i==IdOpcion)
+         {
+          strcpy(list[i].name,name);
+         }
+        }
+}
+void modificarApellido(Employee* list, int len, int IdOpcion,char lastName[])
+{
+      int i;
+      for(i=0;i<len;i++)
+        {
+         if(i==IdOpcion)
+         {
+          strcpy(list[i].lastName,lastName);
+         }
+        }
 }

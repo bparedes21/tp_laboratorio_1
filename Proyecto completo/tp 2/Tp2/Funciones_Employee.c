@@ -62,7 +62,6 @@ int addEmployee(Employee* list, int len, int id, char name[],char lastName[],flo
             list[i].salary=salary;
             list[i].sector=sector;
             list[i].isEmpty=FALSE;
-
         }
     }
 
@@ -70,7 +69,7 @@ int addEmployee(Employee* list, int len, int id, char name[],char lastName[],flo
     return -1;
 }
 
-/*
+
 //2.3 Función findEmployeeById
 
 /** \brief find an Employee by Id en returns the index position in array.
@@ -82,7 +81,7 @@ int addEmployee(Employee* list, int len, int id, char name[],char lastName[],flo
 pointer received or employee not found]
 *
 */
-/*
+
 int findEmployeeById(Employee* list, int len,int id)
 {
 
@@ -90,7 +89,7 @@ int findEmployeeById(Employee* list, int len,int id)
 
 return NULL;
 }
-
+/*
 //2.4 Función removeEmployee
 /** \brief Remove a Employee by Id (put isEmpty Flag in 1)
 *
