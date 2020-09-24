@@ -18,6 +18,7 @@ int initEmployees(Employee* list, int len);
 int addEmployee(Employee* list, int len, int id, char name[],char lastName[],float salary,int sector);
 //2.3 Función findEmployeeById
 
+int findEmployeeById(Employee* list, int len,int id);
 //2.4 Función removeEmployee
 
 //2.5 Función sortEmployeeByName

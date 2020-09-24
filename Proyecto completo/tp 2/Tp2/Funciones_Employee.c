@@ -57,6 +57,7 @@ int addEmployee(Employee* list, int len, int id, char name[],char lastName[],flo
     {
         if(i==id)
         {
+            list[i].id=id;
             strcpy(list[i].name,name);
             strcpy(list[i].lastName,lastName);
             list[i].salary=salary;
@@ -87,9 +88,20 @@ int findEmployeeById(Employee* list, int len,int id)
 
 //Busca un empleado recibiendo como parámetro de búsqueda su Id.
 
+  int i;
+      for(i=0;i<len;i++)
+        {
+            //printf("id_%d i_%d",list[i].id,i);
+         if(list[i].id==id)
+         {  printf("id_%d i_%d",id,i);
+          printf("El empleado que desea eliminar es: \n Id: %d, *Nombre: %s, *Apellido: %s, *Sector: %d \n",i, list[i].name, list[i].lastName,list[i].sector);
+            break;
+         }
+        }
+
 return NULL;
 }
-/*
+
 //2.4 Función removeEmployee
 /** \brief Remove a Employee by Id (put isEmpty Flag in 1)
 *
@@ -100,14 +112,25 @@ return NULL;
 find a employee] - (0) if Ok
 *
 */
-/*
+
 int removeEmployee(Employee* list, int len, int id)
 {
 
 //Elimina de manera lógica (isEmpty Flag en 1) un empleado recibiendo como parámetro su Id.
+int i;
+      for(i=0;i<len;i++)
+        {
+         if(list[i].id==id)
+         {
+          list[i].isEmpty=TRUE;
+          printf("*Nombre:  %d, *isEmpty: %d \n",i,list[i].isEmpty);
+            break;
+         }
+        }
+
 return -1;
 }
-
+/*
 //2.5 Función sortEmployeeByName
 /** \brief Sort the elements in the array of employees, the argument order
 indicate UP or DOWN order

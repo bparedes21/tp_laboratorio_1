@@ -60,7 +60,7 @@ int main()
             for(i=0;i<lenToLower;i++)
             {
                name[i]=tolower(name[i]);
-                printf("MINUSCULA: %s \n ",name);
+
             }
             for(i=0;i<lenToLower;i++)
             {
@@ -75,7 +75,7 @@ int main()
                     name[i+1]=toupper(name[i+1]);
                 }
                }
-                printf("MINUSCULA: %s \n ",name);
+
             }
 
 
@@ -87,7 +87,7 @@ int main()
             for(i=0;i<lenToLower;i++)
             {
                lastName[i]=tolower(lastName[i]);
-                printf("MINUSCULA: %s \n ",lastName);
+
             }
             for(i=0;i<lenToLower;i++)
             {
@@ -102,7 +102,7 @@ int main()
                     lastName[i+1]=toupper(lastName[i+1]);
                 }
                }
-                printf("MINUSCULA: %s \n ",lastName);
+
             }
 
 
@@ -113,7 +113,7 @@ int main()
 
             case 2://MODIFICAR: Se ingresará el Número de Id, permitiendo modificar: o Nombre o Apellido
             mostrarId(list,LEN);
-            IdOpcion=getIntNumId("Ingresar numero de Id para modificar\n");
+            IdOpcion=getIntNumId("Ingresar numero de Id para modificar\n",list);
             opcionNombreOApellido=getIntModificarName("Ingrese \n 1- para modificar *Nombre \n 2- para modificar *Apellido \n");
             switch (opcionNombreOApellido)
             {
@@ -181,8 +181,11 @@ int main()
 
             case 3://BAJA: Se ingresará el Número de Id y se eliminará el empleado del sistema.
             mostrarId(list,LEN);
-            IdOpcion=getIntNumId("Ingresar numero de Id para eliminar el empleado del sistema \n");
-
+            IdOpcion=getIntNumId("Ingresar numero de Id para eliminar el empleado del sistema \n",list);
+            printf("aca1");
+            findEmployeeById(list,LEN,IdOpcion);
+            removeEmployee(list, LEN, IdOpcion);
+            printf("aca2");
             break;
 
 
@@ -208,4 +211,7 @@ int main()
     while (opcionMenu!=5);
     return 0;
 }
+
+
+
 
