@@ -35,7 +35,7 @@ int getIntMenu(char mensaje[])
     int esCeroOUno;
     int isNumericI;
     printf("%s",mensaje);
-     fflush(stdin);
+    fflush(stdin);
     scanf("%s",auxiliar);
 
     esCeroOUno=isNumeric(auxiliar);
@@ -43,7 +43,7 @@ int getIntMenu(char mensaje[])
     {
         printf("ERROR!! \n");
         printf("%s",mensaje);
-         fflush(stdin);
+        fflush(stdin);
         scanf("%s",auxiliar);
         esCeroOUno=isNumeric(auxiliar);
     }
@@ -76,18 +76,18 @@ int compareOptionEqualToOne(int opcionMenu)
 }
 int isNumeric(char numero[])
 {
-   int i=0;
-    int lenNum;
+    int i=0;
 
-   while(numero[i] != '\0')
-   {
-       if( (numero[i] < '0' || numero[i] > '9'))
-          {
-              return -1;
-          }
-       i++;
-   }
-   return 1;
+
+    while(numero[i] != '\0')
+    {
+        if( (numero[i] < '0' || numero[i] > '9'))
+        {
+            return -1;
+        }
+        i++;
+    }
+    return 1;
 }
 float getFloatSalary(char mensaje[])
 {
@@ -103,7 +103,7 @@ float getFloatSalary(char mensaje[])
     {
         printf("ERROR!! \n");
         printf("%s",mensaje);
-         fflush(stdin);
+        fflush(stdin);
         scanf("%s",auxiliar);
         esCeroOUno=isNumeric(auxiliar);
     }
@@ -125,7 +125,7 @@ int getIntSector(char mensaje[])
     {
         printf("ERROR!! \n");
         printf("%s",mensaje);
-         fflush(stdin);
+        fflush(stdin);
         scanf("%s",auxiliar);
         esCeroOUno=isNumeric(auxiliar);
     }
@@ -148,8 +148,8 @@ int getIntOpcion(char mensaje[])
 }
 int getIntNumId(char mensaje[],Employee* list,int len)
 {
-   char auxiliar[20];
-    int isTrue=1;
+    char auxiliar[20];
+
     int esCeroOUno;
     int isNumericI;
     int retunError;
@@ -174,13 +174,13 @@ int getIntNumId(char mensaje[],Employee* list,int len)
     //busca el id si para saber si coincide
 
     retunError=comprobarId( list,len, isNumericI);
-   while(retunError==-1)
-   {
+    while(retunError==-1)
+    {
         printf("ERROR!! \n");
         retunError=getIntNumId("Ingresar numero de empleado \n", list,len);
-   }
+    }
 
-   return retunError;
+    return retunError;
 }
 int comprobarId(Employee* list, int len,int idIngresado)
 {
@@ -209,24 +209,6 @@ int comprobarId(Employee* list, int len,int idIngresado)
 }
 
 
-int mostrarEmpleados(Employee* list, int len)
-{
-    int i;
-    int contadorEmpleados;
-    contadorEmpleados=0;
-    printf("Nro de empleado:  Nombre:    Apellido:   Salary:    Sector: \n");
-    for(i=0; i<len; i++)
-    {
-        if(list[i].isEmpty==FALSE)
-        {
-
-            printf("%6d %15s        %5s        %2.2f     %4d \n",contadorEmpleados, list[i].name, list[i].lastName,list[i].salary,list[i].sector);
-            contadorEmpleados++;
-        }
-
-    }
-
-}
 void modificarNombre(Employee* list, int len, int IdOpcion,char name[])
 {
     int i;
@@ -236,7 +218,7 @@ void modificarNombre(Employee* list, int len, int IdOpcion,char name[])
         if(list[i].id==IdOpcion)
         {
             strcpy(list[i].name,name);
-             printf("El empleado que desea MODIFICAR es: \n Id: %d, *Nombre: %s, *Apellido: %s, *Sector: %d \n",list[i].id, list[i].name, list[i].lastName,list[i].sector);
+            printf("El empleado que desea MODIFICAR es: \n Id: %d, *Nombre: %s, *Apellido: %s, *Sector: %d \n",list[i].id, list[i].name, list[i].lastName,list[i].sector);
             break;
         }
     }
@@ -249,8 +231,8 @@ void modificarApellido(Employee* list, int len, int IdOpcion,char lastName[])
         if(list[i].id==IdOpcion)
         {
             strcpy(list[i].lastName,lastName);
-             printf("El empleado que desea MODIFICAR es: \n Id: %d, *Nombre: %s, *Apellido: %s, *Sector: %d \n",list[i].id, list[i].name, list[i].lastName,list[i].sector);
-             break;
+            printf("El empleado que desea MODIFICAR es: \n Id: %d, *Nombre: %s, *Apellido: %s, *Sector: %d \n",list[i].id, list[i].name, list[i].lastName,list[i].sector);
+            break;
         }
     }
 }
@@ -265,13 +247,33 @@ int onlyLetters(char nameLastName[])
 
     for(i=0; i<lenToLower; i++)
     {
-        if(lenToLower==1  ||(nameLastName[i] < 'a' ||  nameLastName[i] > 'z' ) &&(nameLastName[i] < 'A' || nameLastName[i] > 'Z'))
+        if((nameLastName[i] < 'a' ||  nameLastName[i] > 'z' ) &&(nameLastName[i] < 'A' || nameLastName[i] > 'Z'))
         {
 
             isChar=0;
         }
+        else
+        {
+            if(lenToLower==1)
+            {
+                isChar=0;
+            }
+
+        }
 
     }
-
     return  isChar;
 }
+
+void totalYPromedio (Employee* list, int len)
+{
+    int i;
+    float acumuladorTotal;
+
+
+    for(i=0; i<len; i++)
+    {
+
+    }
+}
+

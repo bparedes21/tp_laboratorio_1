@@ -151,7 +151,7 @@ int main()
             break;
 
         case 2://MODIFICAR: Se ingresará el Número de Id, permitiendo modificar: o Nombre o Apellido
-            mostrarEmpleados(list,LEN);
+            printEmployees(list,LEN);
             IdOpcion=getIntNumId("Ingresar numero de empleado para modificar\n",list, LEN);
 
             opcionNombreOApellido=getIntOpcion("Ingrese \n 1- para modificar *Nombre \n 2- para modificar *Apellido \n");
@@ -233,39 +233,46 @@ int main()
             break;
 
         case 3://BAJA: Se ingresará el Número de Id y se eliminará el empleado del sistema.
-            mostrarEmpleados(list,LEN);
+            printEmployees(list,LEN);
             IdOpcion=getIntNumId("Ingresar numero de empleado para eliminar el empleado del sistema\n",list, LEN);
             findEmployeeById(list,LEN,IdOpcion);
             removeEmployee(list, LEN, IdOpcion);
-            mostrarEmpleados(list,LEN);
+            printEmployees(list,LEN);
             contadorEmployee--;
             break;
 
 
         case 4://4. INFORMAR:
+            opcionOrder=getIntOpcion("Ingrese una opcion para: \n 1-1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.\n2. Total y promedio de los salarios, y cuántos empleados superan el salario promedio.\n");
+
+            switch (opcionOrder)
+            {
+            case 1:
                 opcionOrder=getIntOpcion("Ordenar alfabeticamente por Apellido y Sector \nIngrese una opcion para ordenar: \n 1-Manera ascendente:\n 2-Manera descendente:\n");
-
-             // 1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.
+                // 1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.
                 sortEmployees(list, LEN, opcionOrder);
-                mostrarEmpleados(list,LEN);
-            // 2. Total y promedio de los salarios, y cuántos empleados superan el salario promedio
+                printEmployees(list,LEN);
+                break;
+
+            case 2:
+                // 2. Total y promedio de los salarios, y cuántos empleados superan el salario promedio
 
                 break;
-                break;
-                /*
-            case 5:
-                break;
-                */
             }
 
-            opcionMenu=getIntMenu("Menu de opciones\n Ingrese una opcion\n 1-ALTAS:\n 2-MODIFICAR:\n 3-BAJAS:\n 4-INFORMAR:\n 5-SALIR \n");
-            opcionMenu=numberBetweenOneAndFive(opcionMenu);
+            break;
+            break;
 
         }
-        while (opcionMenu!=5);
-        return 0;
+
+        opcionMenu=getIntMenu("Menu de opciones\n Ingrese una opcion\n 1-ALTAS:\n 2-MODIFICAR:\n 3-BAJAS:\n 4-INFORMAR:\n 5-SALIR \n");
+        opcionMenu=numberBetweenOneAndFive(opcionMenu);
 
     }
+    while (opcionMenu!=5);
+    return 0;
+
+}
 
 
 

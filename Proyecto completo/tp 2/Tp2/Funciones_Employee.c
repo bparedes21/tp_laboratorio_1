@@ -135,7 +135,7 @@ int removeEmployee(Employee* list, int len, int id)
 
     return -1;
 }
-/*
+
 //2.5 Función sortEmployeeByName
 /** \brief Sort the elements in the array of employees, the argument order
 indicate UP or DOWN order
@@ -150,86 +150,155 @@ indicate UP or DOWN order
 
 int sortEmployees(Employee* list, int len, int order)
 {
-    int i;
+
     int j;
     char auxiliarChar[51];
     int auxiliarInt;
+
+    int flagNoEstaOrdenado = 1;
+    j=0;
+
     //Ordena el array de empleados por apellido y sector de manera ascendente o descendente./
     if(order==1)
     {
-        for (i=0; i<len-1; i++);
-        {   printf("I %d \n",i);
-            for (j=i+1; j<len; j++)
-            {   printf("J %d \n",j);
-                printf("lastanme: %s \n",list[i].name);
-                if(list[i].name<list[j].name)
+        while (flagNoEstaOrdenado==1)
+        {
+            flagNoEstaOrdenado = 0;
+            for (j = 1; j < len; j++)
+            {
+                if (list[j].lastName[0] < list[j-1].lastName[0])
                 {
-                    printf("copia \n");
-                    auxiliarInt=list[i].id;
-                    list[i].id=list[j].id;
-                    list[j].id=auxiliarInt;
 
-                    strcpy(auxiliarChar,list[i].name);
-                    strcpy(list[i].name,list[j].name);
-                    strcpy(list[j].name,auxiliarChar);
 
-                    strcpy(auxiliarChar,list[i].lastName);
-                    strcpy(list[i].lastName,list[j].lastName);
-                    strcpy(list[j].lastName,auxiliarChar);
+                    auxiliarInt=list[j].id;
+                    list[j].id=list[j-1].id;
+                    list[j-1].id=auxiliarInt;
 
-                    auxiliarInt=list[i].salary;
-                    list[i].salary=list[j].salary;
-                    list[j].salary=auxiliarInt;
+                    strcpy(auxiliarChar,list[j].name);
+                    strcpy(list[j].name,list[j-1].name);
+                    strcpy(list[j-1].name,auxiliarChar);
 
-                    auxiliarInt=list[i].sector;
-                    list[i].sector=list[j].sector;
-                    list[j].sector=auxiliarInt;
+                    strcpy(auxiliarChar,list[j].lastName);
+                    strcpy(list[j].lastName,list[j-1].lastName);
+                    strcpy(list[j-1].lastName,auxiliarChar);
+
+                    auxiliarInt=list[j].salary;
+                    list[j].salary=list[j-1].salary;
+                    list[j-1].salary=auxiliarInt;
+
+                    auxiliarInt=list[j].sector;
+                    list[j].sector=list[j-1].sector;
+                    list[j-1].sector=auxiliarInt;
+                    flagNoEstaOrdenado = 1;
                 }
+                else
+
+
+                    if (list[j].lastName[0] ==list[j-1].lastName[0])
+                    {
+                        if(list[j].sector<list[j-1].sector)
+                        {
+                            auxiliarInt=list[j].id;
+                            list[j].id=list[j-1].id;
+                            list[j-1].id=auxiliarInt;
+
+                            strcpy(auxiliarChar,list[j].name);
+                            strcpy(list[j].name,list[j-1].name);
+                            strcpy(list[j-1].name,auxiliarChar);
+
+                            strcpy(auxiliarChar,list[j].lastName);
+                            strcpy(list[j].lastName,list[j-1].lastName);
+                            strcpy(list[j-1].lastName,auxiliarChar);
+
+                            auxiliarInt=list[j].salary;
+                            list[j].salary=list[j-1].salary;
+                            list[j-1].salary=auxiliarInt;
+
+                            auxiliarInt=list[j].sector;
+                            list[j].sector=list[j-1].sector;
+                            list[j-1].sector=auxiliarInt;
+                            flagNoEstaOrdenado = 1;
+                        }
+                    }
+
             }
         }
-    }
 
+    }
     if(order==2)
     {
-        for (i=0; i<len-1; i++);
+        while (flagNoEstaOrdenado==1)
         {
-            for (j=i+1; j<len; j++)
+            flagNoEstaOrdenado = 0;
+            for (j = 1; j < len; j++)
             {
-                if(list[i].lastName[0]&& list[i].sector>list[j].lastName[0]&& list[j].sector)
+                if (list[j].lastName[0] > list[j-1].lastName[0])
                 {
-                     auxiliarInt=list[i].id;
-                    list[i].id=list[j].id;
-                    list[j].id=auxiliarInt;
 
-                    strcpy(auxiliarChar,list[i].name);
-                    strcpy(list[i].name,list[j].name);
-                    strcpy(list[j].name,auxiliarChar);
 
-                    strcpy(auxiliarChar,list[i].lastName);
-                    strcpy(list[i].lastName,list[j].lastName);
-                    strcpy(list[j].lastName,auxiliarChar);
+                    auxiliarInt=list[j].id;
+                    list[j].id=list[j-1].id;
+                    list[j-1].id=auxiliarInt;
 
-                    auxiliarInt=list[i].salary;
-                    list[i].salary=list[j].salary;
-                    list[j].salary=auxiliarInt;
+                    strcpy(auxiliarChar,list[j].name);
+                    strcpy(list[j].name,list[j-1].name);
+                    strcpy(list[j-1].name,auxiliarChar);
 
-                    auxiliarInt=list[i].sector;
-                    list[i].sector=list[j].sector;
-                    list[j].sector=auxiliarInt;
+                    strcpy(auxiliarChar,list[j].lastName);
+                    strcpy(list[j].lastName,list[j-1].lastName);
+                    strcpy(list[j-1].lastName,auxiliarChar);
 
+                    auxiliarInt=list[j].salary;
+                    list[j].salary=list[j-1].salary;
+                    list[j-1].salary=auxiliarInt;
+
+                    auxiliarInt=list[j].sector;
+                    list[j].sector=list[j-1].sector;
+                    list[j-1].sector=auxiliarInt;
+                    flagNoEstaOrdenado = 1;
                 }
+                else
+
+
+                    if (list[j].lastName[0] ==list[j-1].lastName[0])
+                    {
+                        if(list[j].sector>list[j-1].sector)
+                        {
+                            auxiliarInt=list[j].id;
+                            list[j].id=list[j-1].id;
+                            list[j-1].id=auxiliarInt;
+
+                            strcpy(auxiliarChar,list[j].name);
+                            strcpy(list[j].name,list[j-1].name);
+                            strcpy(list[j-1].name,auxiliarChar);
+
+                            strcpy(auxiliarChar,list[j].lastName);
+                            strcpy(list[j].lastName,list[j-1].lastName);
+                            strcpy(list[j-1].lastName,auxiliarChar);
+
+                            auxiliarInt=list[j].salary;
+                            list[j].salary=list[j-1].salary;
+                            list[j-1].salary=auxiliarInt;
+
+                            auxiliarInt=list[j].sector;
+                            list[j].sector=list[j-1].sector;
+                            list[j-1].sector=auxiliarInt;
+                            flagNoEstaOrdenado = 1;
+                        }
+                    }
+
             }
         }
+
     }
 
 
-
-
-return 0;
+    return 0;
 }
 
-/*
+
 //2.6 Función printEmployees
+
 /** \brief print the content of employees array
 *
 * \param list Employee*
@@ -237,11 +306,27 @@ return 0;
 * \return int
 *
 *
-
+*/
 
 int printEmployees(Employee* list, int length)
 {
 //Imprime el array de empleados de forma encolumnada.
+
+    int i;
+    int contadorEmpleados;
+    contadorEmpleados=0;
+    printf("Nro de empleado:  Nombre:    Apellido:   Salary:    Sector: \n");
+    for(i=0; i<length; i++)
+    {
+        if(list[i].isEmpty==FALSE)
+        {
+
+            printf("%6d %15s        %5s        %2.2f     %4d \n",contadorEmpleados, list[i].name, list[i].lastName,list[i].salary,list[i].sector);
+            contadorEmpleados++;
+        }
+
+    }
+
 return 0;
 }
-*/
+

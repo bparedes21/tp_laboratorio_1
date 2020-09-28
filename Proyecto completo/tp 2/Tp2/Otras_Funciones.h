@@ -11,7 +11,6 @@ int isNumeric(char numero[]);
 int getIntSector(char mensaje[]);
 int getIntOpcion(char mensaje[]);
 int getIntNumId(char mensaje[],Employee* list,int len);
-int mostrarEmpleados(Employee* list, int len);
 char primeraLetraMayuscula(char contieneLetras[]);
 void modificarApellido(Employee* list, int len, int IdOpcion,char lastName[]);
 void modificarNombre(Employee* list, int len, int IdOpcion,char name[]);
