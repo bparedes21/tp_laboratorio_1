@@ -29,189 +29,243 @@ int main()
     int newID;
     int isEmpty;
     char  name[51];
-    char  nameToLower[51];
+    int  nameIsChar;
     char lastName[51];
     float salary;
     int sector;
     int i;
+    int contadorId;
     int lenToLower;
     int IdOpcion;
     int opcionNombreOApellido;
-
+    int contadorEmployee;
+    int opcionOrder;
+    contadorEmployee=0;
+    nameIsChar=0;
+    contadorId=100;
 
     returnInitEmployees=initEmployees(list, LEN);
 
     opcionMenu=getIntMenu("Menu de opciones\n Ingrese una opcion\n 1-ALTAS:\n 2-MODIFICAR:\n 3-BAJAS:\n 4-INFORMAR:\n 5-SALIR \n");
     opcionMenu=numberBetweenOneAndFive(opcionMenu);
-    opcionMenu=compareOptionEqualToOne(opcionMenu);
+
 
     do
     {
+        if(contadorEmployee==0)
+        {
+            opcionMenu=compareOptionEqualToOne(opcionMenu);
+        }
         switch (opcionMenu)
         {
         case 1://ALTAS: Se debe permitir ingresar un empleado calculando automáticamente el número
-            newID=newId(list, LEN);
-
-            printf("Ingrese Nombre \n"); // nombre
-            fflush(stdin);
-            scanf ("%[^\n]",name);
-            lenToLower=strlen(name);
-
-            for(i=0;i<lenToLower;i++)
+            contadorId++;
+            newID=newId(list, LEN, contadorId);
+            if(newID==-1)
             {
-               name[i]=tolower(name[i]);
-
+                printf("No hay mas espacio para un nuevo ID \n");
             }
-            for(i=0;i<lenToLower;i++)
+            else
             {
-                if(i==0)
-               {
-                    name[i]=toupper(name[i]);
-               }
-               else
-               {
-                if(name[i]==' ')
+                printf("Ingrese Nombre \n");
+                fflush(stdin);
+                scanf ("%[^\n]",name);
+
+                lenToLower=strlen(name);
+
+                for(i=0; i<lenToLower; i++)
                 {
-                    name[i+1]=toupper(name[i+1]);
+                    name[i]=tolower(name[i]);
+
                 }
-               }
 
-            }
+                nameIsChar=onlyLetters(name);
 
-
-            printf("Ingrese Apellido \n"); //Apellido
-            fflush(stdin);
-            scanf ("%[^\n]",lastName);
-            lenToLower=strlen(lastName);
-
-            for(i=0;i<lenToLower;i++)
-            {
-               lastName[i]=tolower(lastName[i]);
-
-            }
-            for(i=0;i<lenToLower;i++)
-            {
-                if(i==0)
-               {
-                    lastName[i]=toupper(lastName[i]);
-               }
-               else
-               {
-                if(lastName[i]==' ')
+                while(nameIsChar==0)
                 {
-                    lastName[i+1]=toupper(lastName[i+1]);
-                }
-               }
 
+                    printf("ERROR Ingrese Nombre solo letras \n");
+                    fflush(stdin);
+                    scanf ("%[^\n]",name);
+                    nameIsChar=onlyLetters(name);
+                }
+                for(i=0; i<lenToLower; i++)
+                {
+                    if(i==0)
+                    {
+                        name[i]=toupper(name[i]);
+                    }
+                    else
+                    {
+                        if(name[i]==' ')
+                        {
+                            name[i+1]=toupper(name[i+1]);
+                        }
+                    }
+
+                }
+                printf("Ingrese Apellido \n"); //Apellido
+                fflush(stdin);
+                scanf ("%[^\n]",lastName);
+                lenToLower=strlen(lastName);
+
+                for(i=0; i<lenToLower; i++)
+                {
+                    lastName[i]=tolower(lastName[i]);
+
+                }
+                nameIsChar=onlyLetters(lastName);
+                while(nameIsChar==0)
+                {
+                    printf("%d",nameIsChar);
+                    printf("ERROR Ingrese Apellido solo letras \n");
+                    fflush(stdin);
+                    scanf ("%[^\n]",name);
+                    nameIsChar=onlyLetters(name);
+
+                }
+                for(i=0; i<lenToLower; i++)
+                {
+                    if(i==0)
+                    {
+                        lastName[i]=toupper(lastName[i]);
+                    }
+                    else
+                    {
+                        if(lastName[i]==' ')
+                        {
+                            lastName[i+1]=toupper(lastName[i+1]);
+                        }
+                    }
+
+                }
+
+
+                salary=getFloatSalary("Ingrese el salario \n");
+                sector=getIntSector("Ingrese el sector \n");
+
+                addEmployee(list,LEN, newID, name, lastName,salary, sector);
+                contadorEmployee++;
             }
 
-
-            salary=getFloatSalary("Ingrese el salario \n");
-            sector=getIntSector("Ingrese el sector \n");
-            addEmployee(list,LEN, newID, name, lastName,salary, sector);
             break;
 
-            case 2://MODIFICAR: Se ingresará el Número de Id, permitiendo modificar: o Nombre o Apellido
-            mostrarId(list,LEN);
-            IdOpcion=getIntNumId("Ingresar numero de Id para modificar\n",list);
-            opcionNombreOApellido=getIntModificarName("Ingrese \n 1- para modificar *Nombre \n 2- para modificar *Apellido \n");
+        case 2://MODIFICAR: Se ingresará el Número de Id, permitiendo modificar: o Nombre o Apellido
+            mostrarEmpleados(list,LEN);
+            IdOpcion=getIntNumId("Ingresar numero de empleado para modificar\n",list, LEN);
+
+            opcionNombreOApellido=getIntOpcion("Ingrese \n 1- para modificar *Nombre \n 2- para modificar *Apellido \n");
             switch (opcionNombreOApellido)
             {
             case 1:
-            printf("Ingrese *Nombre \n"); // nombre
-            fflush(stdin);
-            scanf ("%[^\n]",name);
-            lenToLower=strlen(name);
+                printf("Ingrese Nombre \n");
+                fflush(stdin);
+                scanf ("%[^\n]",name);
 
-            for(i=0;i<lenToLower;i++)
-            {
-               name[i]=tolower(name[i]);
-                printf("MINUSCULA: %s \n ",name);
-            }
-            for(i=0;i<lenToLower;i++)
-            {
-                if(i==0)
-               {
-                    name[i]=toupper(name[i]);
-               }
-               else
-               {
-                if(name[i]==' ')
+                lenToLower=strlen(name);
+
+                for(i=0; i<lenToLower; i++)
                 {
-                    name[i+1]=toupper(name[i+1]);
+                    name[i]=tolower(name[i]);
+
                 }
-               }
-                printf("MINUSCULA: %s \n ",name);
-            }
-            modificarNombre(list, LEN, IdOpcion, name);
+
+                nameIsChar=onlyLetters(name);
+
+                while(nameIsChar==0)
+                {
+                    printf("ERROR Ingrese Nombre solo letras \n");
+                    fflush(stdin);
+                    scanf ("%[^\n]",name);
+                    nameIsChar=onlyLetters(name);
+                }
+                for(i=0; i<lenToLower; i++)
+                {
+                    if(i==0)
+                    {
+                        name[i]=toupper(name[i]);
+                    }
+                    else
+                    {
+                        if(name[i]==' ')
+                        {
+                            name[i+1]=toupper(name[i+1]);
+                        }
+                    }
+
+                }
+
+                modificarNombre(list, LEN, IdOpcion, name);
+
                 break;
 
             case 2:
-            printf("Ingrese *Apellido \n"); //Apellido
-            fflush(stdin);
-            scanf ("%[^\n]",lastName);
-            lenToLower=strlen(lastName);
+                printf("Ingrese *Apellido \n"); //Apellido
+                fflush(stdin);
+                scanf ("%[^\n]",lastName);
+                lenToLower=strlen(lastName);
 
-            for(i=0;i<lenToLower;i++)
-            {
-               lastName[i]=tolower(lastName[i]);
-                printf("MINUSCULA: %s \n ",lastName);
-            }
-            for(i=0;i<lenToLower;i++)
-            {
-                if(i==0)
-               {
-                    lastName[i]=toupper(lastName[i]);
-               }
-               else
-               {
-                if(lastName[i]==' ')
+                for(i=0; i<lenToLower; i++)
                 {
-                    lastName[i+1]=toupper(lastName[i+1]);
-                }
-               }
-                printf("MINUSCULA: %s \n ",lastName);
+                    lastName[i]=tolower(lastName[i]);
 
-            }
+                }
+                for(i=0; i<lenToLower; i++)
+                {
+                    if(i==0)
+                    {
+                        lastName[i]=toupper(lastName[i]);
+                    }
+                    else
+                    {
+                        if(lastName[i]==' ')
+                        {
+                            lastName[i+1]=toupper(lastName[i+1]);
+                        }
+                    }
+
+
+                }
+
+                modificarApellido(list, LEN, IdOpcion, name);
                 break;
             }
-
-            modificarApellido(list, LEN, IdOpcion, name);
             break;
 
-            case 3://BAJA: Se ingresará el Número de Id y se eliminará el empleado del sistema.
-            mostrarId(list,LEN);
-            IdOpcion=getIntNumId("Ingresar numero de Id para eliminar el empleado del sistema \n",list);
-            printf("aca1");
+        case 3://BAJA: Se ingresará el Número de Id y se eliminará el empleado del sistema.
+            mostrarEmpleados(list,LEN);
+            IdOpcion=getIntNumId("Ingresar numero de empleado para eliminar el empleado del sistema\n",list, LEN);
             findEmployeeById(list,LEN,IdOpcion);
             removeEmployee(list, LEN, IdOpcion);
-            printf("aca2");
+            mostrarEmpleados(list,LEN);
+            contadorEmployee--;
             break;
 
 
-            /*case 4://4. INFORMAR:
+        case 4://4. INFORMAR:
+                opcionOrder=getIntOpcion("Ordenar alfabeticamente por Apellido y Sector \nIngrese una opcion para ordenar: \n 1-Manera ascendente:\n 2-Manera descendente:\n");
 
-                    switch ()
-                    {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
+             // 1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.
+                sortEmployees(list, LEN, opcionOrder);
+                mostrarEmpleados(list,LEN);
+            // 2. Total y promedio de los salarios, y cuántos empleados superan el salario promedio
 
-
-                    // 1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.
-                    // 2. Total y promedio de los salarios, y cuántos empleados superan el salario promed
                 break;
-                 case 5:
-                break;*/
-        }
-        opcionMenu=getIntMenu("Menu de opciones\n Ingrese una opcion\n 1-ALTAS:\n 2-MODIFICAR:\n 3-BAJAS:\n 4-INFORMAR:\n 5-SALIR \n");
-        opcionMenu=numberBetweenOneAndFive(opcionMenu);
-    }
-    while (opcionMenu!=5);
-    return 0;
-}
+                break;
+                /*
+            case 5:
+                break;
+                */
+            }
 
+            opcionMenu=getIntMenu("Menu de opciones\n Ingrese una opcion\n 1-ALTAS:\n 2-MODIFICAR:\n 3-BAJAS:\n 4-INFORMAR:\n 5-SALIR \n");
+            opcionMenu=numberBetweenOneAndFive(opcionMenu);
+
+        }
+        while (opcionMenu!=5);
+        return 0;
+
+    }
 
 
 

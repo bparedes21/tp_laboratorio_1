@@ -31,6 +31,7 @@ int initEmployees(Employee* list, int len)
             list[i].isEmpty =TRUE;
         }
     }
+
     return Error;
 }
 
@@ -52,22 +53,26 @@ free space] - (0) if Ok
 int addEmployee(Employee* list, int len, int id, char name[],char lastName[],float salary,int sector)
 {
     int i;
-    int auxiliar;
+    int error;
+    error=-1;
+
     for(i=0; i<len; i++)
     {
-        if(i==id)
+        if(list[i].isEmpty==TRUE)
         {
+
             list[i].id=id;
             strcpy(list[i].name,name);
             strcpy(list[i].lastName,lastName);
             list[i].salary=salary;
             list[i].sector=sector;
             list[i].isEmpty=FALSE;
+
+            error=0;
+            break;
         }
     }
-
-
-    return -1;
+    return error;
 }
 
 
@@ -88,18 +93,18 @@ int findEmployeeById(Employee* list, int len,int id)
 
 //Busca un empleado recibiendo como parámetro de búsqueda su Id.
 
-  int i;
-      for(i=0;i<len;i++)
-        {
-            //printf("id_%d i_%d",list[i].id,i);
-         if(list[i].id==id)
-         {  printf("id_%d i_%d",id,i);
-          printf("El empleado que desea eliminar es: \n Id: %d, *Nombre: %s, *Apellido: %s, *Sector: %d \n",i, list[i].name, list[i].lastName,list[i].sector);
-            break;
-         }
-        }
+    int i;
+    for(i=0; i<len; i++)
+    {
 
-return NULL;
+        if(list[i].id==id)
+        {
+            printf("El empleado que desea eliminar es: \n *Nombre: %s, *Apellido: %s, *Sector: %d \n", list[i].name, list[i].lastName,list[i].sector);
+            break;
+        }
+    }
+
+    return 0;
 }
 
 //2.4 Función removeEmployee
@@ -117,18 +122,18 @@ int removeEmployee(Employee* list, int len, int id)
 {
 
 //Elimina de manera lógica (isEmpty Flag en 1) un empleado recibiendo como parámetro su Id.
-int i;
-      for(i=0;i<len;i++)
+    int i;
+    for(i=0; i<len; i++)
+    {
+        if(list[i].id==id)
         {
-         if(list[i].id==id)
-         {
-          list[i].isEmpty=TRUE;
-          printf("*Nombre:  %d, *isEmpty: %d \n",i,list[i].isEmpty);
-            break;
-         }
-        }
+            list[i].isEmpty=TRUE;
 
-return -1;
+            break;
+        }
+    }
+
+    return -1;
 }
 /*
 //2.5 Función sortEmployeeByName
@@ -142,14 +147,88 @@ indicate UP or DOWN order
 *
 */
 
-/*
+
 int sortEmployees(Employee* list, int len, int order)
 {
+    int i;
+    int j;
+    char auxiliarChar[51];
+    int auxiliarInt;
+    //Ordena el array de empleados por apellido y sector de manera ascendente o descendente./
+    if(order==1)
+    {
+        for (i=0; i<len-1; i++);
+        {   printf("I %d \n",i);
+            for (j=i+1; j<len; j++)
+            {   printf("J %d \n",j);
+                printf("lastanme: %s \n",list[i].name);
+                if(list[i].name<list[j].name)
+                {
+                    printf("copia \n");
+                    auxiliarInt=list[i].id;
+                    list[i].id=list[j].id;
+                    list[j].id=auxiliarInt;
 
-//Ordena el array de empleados por apellido y sector de manera ascendente o descendente./
+                    strcpy(auxiliarChar,list[i].name);
+                    strcpy(list[i].name,list[j].name);
+                    strcpy(list[j].name,auxiliarChar);
+
+                    strcpy(auxiliarChar,list[i].lastName);
+                    strcpy(list[i].lastName,list[j].lastName);
+                    strcpy(list[j].lastName,auxiliarChar);
+
+                    auxiliarInt=list[i].salary;
+                    list[i].salary=list[j].salary;
+                    list[j].salary=auxiliarInt;
+
+                    auxiliarInt=list[i].sector;
+                    list[i].sector=list[j].sector;
+                    list[j].sector=auxiliarInt;
+                }
+            }
+        }
+    }
+
+    if(order==2)
+    {
+        for (i=0; i<len-1; i++);
+        {
+            for (j=i+1; j<len; j++)
+            {
+                if(list[i].lastName[0]&& list[i].sector>list[j].lastName[0]&& list[j].sector)
+                {
+                     auxiliarInt=list[i].id;
+                    list[i].id=list[j].id;
+                    list[j].id=auxiliarInt;
+
+                    strcpy(auxiliarChar,list[i].name);
+                    strcpy(list[i].name,list[j].name);
+                    strcpy(list[j].name,auxiliarChar);
+
+                    strcpy(auxiliarChar,list[i].lastName);
+                    strcpy(list[i].lastName,list[j].lastName);
+                    strcpy(list[j].lastName,auxiliarChar);
+
+                    auxiliarInt=list[i].salary;
+                    list[i].salary=list[j].salary;
+                    list[j].salary=auxiliarInt;
+
+                    auxiliarInt=list[i].sector;
+                    list[i].sector=list[j].sector;
+                    list[j].sector=auxiliarInt;
+
+                }
+            }
+        }
+    }
+
+
+
+
 return 0;
 }
 
+/*
 //2.6 Función printEmployees
 /** \brief print the content of employees array
 *
@@ -157,9 +236,9 @@ return 0;
 * \param length int
 * \return int
 *
-*/
+*
 
-/*
+
 int printEmployees(Employee* list, int length)
 {
 //Imprime el array de empleados de forma encolumnada.

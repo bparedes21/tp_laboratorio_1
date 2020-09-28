@@ -7,7 +7,8 @@
 #define TRUE 1
 #define FALSE 0
 
-int newId(Employee* list, int len)
+
+int newId(Employee* list, int len, int contadorId)
 {
     /*
     El Id a asignar es  una posicion vacia en el vector es un numero unico
@@ -19,24 +20,35 @@ int newId(Employee* list, int len)
     {
         if(list[i].isEmpty==TRUE)
         {
-            Id=i;
-            printf("ID , %d \n",Id);
+            Id=contadorId;
+
             break;
         }
     }
-    if(Id==-1)
-    {
-        printf("No hay mas espacio para un nuevo ID \n");
-    }
+
     return Id;
 }
 
 int getIntMenu(char mensaje[])
 {
-    int auxiliar;
+    char auxiliar [40];
+    int esCeroOUno;
+    int isNumericI;
     printf("%s",mensaje);
-    scanf("%d",&auxiliar);
-    return auxiliar;
+     fflush(stdin);
+    scanf("%s",auxiliar);
+
+    esCeroOUno=isNumeric(auxiliar);
+    while(esCeroOUno==-1)
+    {
+        printf("ERROR!! \n");
+        printf("%s",mensaje);
+         fflush(stdin);
+        scanf("%s",auxiliar);
+        esCeroOUno=isNumeric(auxiliar);
+    }
+    isNumericI=atoi(auxiliar);
+    return isNumericI;
 
 }
 int numberBetweenOneAndFive(int opcion)
@@ -51,6 +63,8 @@ int numberBetweenOneAndFive(int opcion)
 
     return opcion;
 }
+
+
 int compareOptionEqualToOne(int opcionMenu)
 {
     while (opcionMenu!=1)
@@ -60,68 +74,156 @@ int compareOptionEqualToOne(int opcionMenu)
     }
     return opcionMenu;
 }
+int isNumeric(char numero[])
+{
+   int i=0;
+    int lenNum;
 
+   while(numero[i] != '\0')
+   {
+       if( (numero[i] < '0' || numero[i] > '9'))
+          {
+              return -1;
+          }
+       i++;
+   }
+   return 1;
+}
 float getFloatSalary(char mensaje[])
 {
-    float auxiliar;
+
+    char auxiliar[20];
+    int esCeroOUno;
+    float isNumericF;
     printf("%s",mensaje);
-    scanf("%f",&auxiliar);
-    return auxiliar;
+    fflush(stdin);
+    scanf("%s",auxiliar);
+    esCeroOUno=isNumeric(auxiliar);
+    while(esCeroOUno==-1)
+    {
+        printf("ERROR!! \n");
+        printf("%s",mensaje);
+         fflush(stdin);
+        scanf("%s",auxiliar);
+        esCeroOUno=isNumeric(auxiliar);
+    }
+    isNumericF=atof(auxiliar);
+
+    return isNumericF;
 }
 int getIntSector(char mensaje[])
 {
-    int auxiliar;
+
+    char auxiliar[20];
+    int esCeroOUno;
+    int isNumericI;
     printf("%s",mensaje);
-    scanf("%d",&auxiliar);
-    return auxiliar;
+    fflush(stdin);
+    scanf("%s",auxiliar);
+    esCeroOUno=isNumeric(auxiliar);
+    while(esCeroOUno==-1)
+    {
+        printf("ERROR!! \n");
+        printf("%s",mensaje);
+         fflush(stdin);
+        scanf("%s",auxiliar);
+        esCeroOUno=isNumeric(auxiliar);
+    }
+    isNumericI=atoi(auxiliar);
+
+    return isNumericI;
 }
-int getIntModificarName(char mensaje[])
+int getIntOpcion(char mensaje[])
 {
     int auxiliar;
     printf("%s",mensaje);
     scanf("%d",&auxiliar);
     while(auxiliar<1||auxiliar>2)
     {
-        printf("IIngrese \n 1- para modificar *Nombre \n 2- para modificar *Apellido \n");
+        printf("%s \n",mensaje);
         scanf("%d",&auxiliar);
     }
 
     return auxiliar;
 }
-int getIntNumId(char mensaje[],Employee* list)
+int getIntNumId(char mensaje[],Employee* list,int len)
 {
-    int auxiliar;
+   char auxiliar[20];
     int isTrue=1;
+    int esCeroOUno;
+    int isNumericI;
+    int retunError;
+
     printf("%s",mensaje);
-    scanf("%d",&auxiliar);
-
-        if(list[auxiliar].isEmpty==TRUE)
-        {   printf("%d true",list[auxiliar].isEmpty);
-            isTrue=TRUE;
-
-        }
-        else
-        {   printf("%d false",list[auxiliar].isEmpty);
-            isTrue=FALSE;
-
-        }
-
-    while(isTrue==1)
+    fflush(stdin);
+    scanf("%s",auxiliar);
+    //comprueba que sea un numero
+    esCeroOUno=isNumeric(auxiliar);
+    //mientras no sea un numero lo vuelve a pedir
+    while(esCeroOUno==-1)
     {
-        printf("ERROR Ingresar numero de Id para modificar \n");
-        scanf("%d",&auxiliar);
+        printf("ERROR!! \n");
+        printf("%s",mensaje);
+        fflush(stdin);
+        scanf("%s",auxiliar);
+        esCeroOUno=isNumeric(auxiliar);
     }
-    return auxiliar;
+    //convierte la cadena de caracteres a entero
+    isNumericI=atoi(auxiliar);
+
+    //busca el id si para saber si coincide
+
+    retunError=comprobarId( list,len, isNumericI);
+   while(retunError==-1)
+   {
+        printf("ERROR!! \n");
+        retunError=getIntNumId("Ingresar numero de empleado \n", list,len);
+   }
+
+   return retunError;
 }
-int mostrarId(Employee* list, int len)
+int comprobarId(Employee* list, int len,int idIngresado)
 {
+
+    int retunError=-1;
     int i;
+    int contadorEmpleados;
+
     for(i=0; i<len; i++)
     {
         if(list[i].isEmpty==FALSE)
         {
-            printf("Id: %d, *Nombre: %s, *Apellido: %s, *Sector: %d \n",i, list[i].name, list[i].lastName,list[i].sector);
+            if(contadorEmpleados==idIngresado)
+            {
+                retunError=list[i].id;
+
+            }
+
+            contadorEmpleados++;
         }
+    }
+
+
+    return retunError;
+
+}
+
+
+int mostrarEmpleados(Employee* list, int len)
+{
+    int i;
+    int contadorEmpleados;
+    contadorEmpleados=0;
+    printf("Nro de empleado:  Nombre:    Apellido:   Salary:    Sector: \n");
+    for(i=0; i<len; i++)
+    {
+        if(list[i].isEmpty==FALSE)
+        {
+
+            printf("%6d %15s        %5s        %2.2f     %4d \n",contadorEmpleados, list[i].name, list[i].lastName,list[i].salary,list[i].sector);
+            contadorEmpleados++;
+        }
+
     }
 
 }
@@ -131,9 +233,11 @@ void modificarNombre(Employee* list, int len, int IdOpcion,char name[])
 
     for(i=0; i<len; i++)
     {
-        if(i==IdOpcion)
+        if(list[i].id==IdOpcion)
         {
             strcpy(list[i].name,name);
+             printf("El empleado que desea MODIFICAR es: \n Id: %d, *Nombre: %s, *Apellido: %s, *Sector: %d \n",list[i].id, list[i].name, list[i].lastName,list[i].sector);
+            break;
         }
     }
 }
@@ -142,9 +246,32 @@ void modificarApellido(Employee* list, int len, int IdOpcion,char lastName[])
     int i;
     for(i=0; i<len; i++)
     {
-        if(i==IdOpcion)
+        if(list[i].id==IdOpcion)
         {
             strcpy(list[i].lastName,lastName);
+             printf("El empleado que desea MODIFICAR es: \n Id: %d, *Nombre: %s, *Apellido: %s, *Sector: %d \n",list[i].id, list[i].name, list[i].lastName,list[i].sector);
+             break;
         }
     }
+}
+int onlyLetters(char nameLastName[])
+{
+    int i;
+
+    int isChar=-1;
+    int lenToLower=0;
+
+    lenToLower=strlen(nameLastName);
+
+    for(i=0; i<lenToLower; i++)
+    {
+        if(lenToLower==1  ||(nameLastName[i] < 'a' ||  nameLastName[i] > 'z' ) &&(nameLastName[i] < 'A' || nameLastName[i] > 'Z'))
+        {
+
+            isChar=0;
+        }
+
+    }
+
+    return  isChar;
 }
