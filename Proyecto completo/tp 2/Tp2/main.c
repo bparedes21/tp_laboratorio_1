@@ -3,7 +3,7 @@
 #include <string.h>
 #include "Array_de_Employee.h"
 #include "Otras_Funciones.h"
-#define LEN 3
+#define LEN 1000
 #define TRUE 1
 #define FALSE 0
 /*El sistema deberá tener el siguiente menú de opciones:
@@ -24,10 +24,8 @@ carga de algún empleado.
 int main()
 {
     Employee list[LEN];
-    int returnInitEmployees;
     int opcionMenu;
     int newID;
-    int isEmpty;
     char  name[51];
     int  nameIsChar;
     char lastName[51];
@@ -40,18 +38,18 @@ int main()
     int opcionNombreOApellido;
     int contadorEmployee;
     int opcionOrder;
+
     contadorEmployee=0;
     nameIsChar=0;
     contadorId=100;
 
-    returnInitEmployees=initEmployees(list, LEN);
-
-    opcionMenu=getIntMenu("Menu de opciones\n Ingrese una opcion\n 1-ALTAS:\n 2-MODIFICAR:\n 3-BAJAS:\n 4-INFORMAR:\n 5-SALIR \n");
-    opcionMenu=numberBetweenOneAndFive(opcionMenu);
-
+    initEmployees(list, LEN);
+    //hardCodearPerfil(list,LEN);
 
     do
     {
+        opcionMenu=getIntMenu("Menu de opciones\n Ingrese una opcion\n 1-ALTAS:\n 2-MODIFICAR:\n 3-BAJAS:\n 4-INFORMAR:\n 5-SALIR \n");
+        opcionMenu=numberBetweenOneAndFive(opcionMenu);
         if(contadorEmployee==0)
         {
             opcionMenu=compareOptionEqualToOne(opcionMenu);
@@ -70,24 +68,20 @@ int main()
                 printf("Ingrese Nombre \n");
                 fflush(stdin);
                 scanf ("%[^\n]",name);
-
                 lenToLower=strlen(name);
-
-                for(i=0; i<lenToLower; i++)
-                {
-                    name[i]=tolower(name[i]);
-
-                }
-
                 nameIsChar=onlyLetters(name);
-
-                while(nameIsChar==0)
+                while(nameIsChar==-1)
                 {
-
+                    printf("while %d",nameIsChar);
                     printf("ERROR Ingrese Nombre solo letras \n");
                     fflush(stdin);
                     scanf ("%[^\n]",name);
                     nameIsChar=onlyLetters(name);
+                }
+                for(i=0; i<lenToLower; i++)
+                {
+                    name[i]=tolower(name[i]);
+
                 }
                 for(i=0; i<lenToLower; i++)
                 {
@@ -109,19 +103,21 @@ int main()
                 scanf ("%[^\n]",lastName);
                 lenToLower=strlen(lastName);
 
-                for(i=0; i<lenToLower; i++)
-                {
-                    lastName[i]=tolower(lastName[i]);
 
-                }
                 nameIsChar=onlyLetters(lastName);
-                while(nameIsChar==0)
+
+                while(nameIsChar==-1)
                 {
                     printf("%d",nameIsChar);
                     printf("ERROR Ingrese Apellido solo letras \n");
                     fflush(stdin);
-                    scanf ("%[^\n]",name);
-                    nameIsChar=onlyLetters(name);
+                    scanf ("%[^\n]",lastName);
+                    nameIsChar=onlyLetters(lastName);
+
+                }
+                for(i=0; i<lenToLower; i++)
+                {
+                    lastName[i]=tolower(lastName[i]);
 
                 }
                 for(i=0; i<lenToLower; i++)
@@ -172,7 +168,7 @@ int main()
 
                 nameIsChar=onlyLetters(name);
 
-                while(nameIsChar==0)
+                while(nameIsChar==-1||nameIsChar==-2)
                 {
                     printf("ERROR Ingrese Nombre solo letras \n");
                     fflush(stdin);
@@ -243,7 +239,7 @@ int main()
 
 
         case 4://4. INFORMAR:
-            opcionOrder=getIntOpcion("Ingrese una opcion para: \n 1-1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.\n2. Total y promedio de los salarios, y cuántos empleados superan el salario promedio.\n");
+            opcionOrder=getIntOpcion("Ingrese una opcion para: \n1. Listado de los empleados ordenados alfabeticamente por Apellido y Sector.\n2. Total y promedio de los salarios, y cuántos empleados superan el salario promedio.\n");
 
             switch (opcionOrder)
             {
@@ -256,7 +252,7 @@ int main()
 
             case 2:
                 // 2. Total y promedio de los salarios, y cuántos empleados superan el salario promedio
-
+                calcularTotalyPromedio (list,LEN,contadorEmployee);
                 break;
             }
 
@@ -264,10 +260,6 @@ int main()
             break;
 
         }
-
-        opcionMenu=getIntMenu("Menu de opciones\n Ingrese una opcion\n 1-ALTAS:\n 2-MODIFICAR:\n 3-BAJAS:\n 4-INFORMAR:\n 5-SALIR \n");
-        opcionMenu=numberBetweenOneAndFive(opcionMenu);
-
     }
     while (opcionMenu!=5);
     return 0;

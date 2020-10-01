@@ -1,26 +1,36 @@
 # depslib dependency file v1.0
-1601330039 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\main.c
+1601593081 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Array_de_Employee.h"
 	"Otras_Funciones.h"
 
-1600973992 d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\array_de_employee.h
+1601593081 d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\array_de_employee.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
 
-1601330102 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\funciones_employee.c
+1601593085 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\funciones_employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Array_de_Employee.h"
+	"Otras_Funciones.h"
+
+1601592170 d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\otras_funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1601593268 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\otras_funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Array_de_Employee.h"
 	"Otras_Funciones.h"
-
-1601330039 d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\otras_funciones.h
-
-1601330039 source:d:\git\tp_laboratorio_1\proyecto completo\tp 2\tp2\otras_funciones.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"Array_de_Employee.h"
-	"Otras_Funciones.h"
+	<ctype.h>
 
