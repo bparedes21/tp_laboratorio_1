@@ -20,7 +20,7 @@ void modificarNombre(Employee* list, int len, int IdOpcion,char name[]);
 int comprobarId(Employee* list, int len,int idIngresado);
 int onlyLetters(char nameLastName[]);
 void calcularTotalyPromedio (Employee* list, int len,int contadorEmpleados);
-void hardCodearPerfil(Employee listEmploye[],int len);
+void hardCodearPerfil(Employee listEmploye[]);
 int cantidadDeSectores(Employee* listEmploye,int len);
 
 #endif // OTRAS_FUNCIONES_H_INCLUDED

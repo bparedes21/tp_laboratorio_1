@@ -27,5 +27,5 @@ int removeEmployee(Employee* list, int len, int id);
 //2.5 Función sortEmployeeByName
 int sortEmployees(Employee* list, int len, int order);
 //2.6 Función printEmployees
-int printEmployees(Employee* list, int length);
+int printEmployees(Employee* list, int length , int cantidadEmpleados);
 #endif // ARRAY_DE_EMPLOYEE_H_INCLUDED

@@ -27,9 +27,8 @@ int newId(Employee* list, int len, int contadorId)
     {
         if(list[i].isEmpty==TRUE)
         {
-            Id=contadorId;
 
-            break;
+            Id=contadorId;
         }
     }
 
@@ -255,7 +254,7 @@ int comprobarId(Employee* list, int len,int idIngresado)
 
     int retunError=-1;
     int i;
-    int contadorEmpleados;
+    int contadorEmpleados=1;
 
     for(i=0; i<len; i++)
     {
@@ -265,6 +264,7 @@ int comprobarId(Employee* list, int len,int idIngresado)
             {
                 retunError=list[i].id;
 
+                break;
             }
 
             contadorEmpleados++;
@@ -391,7 +391,7 @@ void calcularTotalyPromedio (Employee* list, int len,int contadorEmpleados)
     }
 
 
-    printf("Total: %f \nPromedio de los salarios: %.2f \nEmpleados que superan el salario promedio: %d \n",acumuladorTotal,promedioDeSueldos,contadorMayorSueldo);
+    printf("Total: %.2f \nPromedio de los salarios: %.2f \nEmpleados que superan el salario promedio: %d \n",acumuladorTotal,promedioDeSueldos,contadorMayorSueldo);
 
 }
 /** \brief  ingresa datos en el array estructura list
@@ -404,19 +404,19 @@ void calcularTotalyPromedio (Employee* list, int len,int contadorEmpleados)
  *
  */
 
-void hardCodearPerfil(Employee* listEmploye,int len)
+void hardCodearPerfil(Employee* listEmploye)
 {
 
-    int arrayId[10]= {101,102,103,104,105,106,107,108,109,110};
+    int arrayId[10]= {100,101,102,104,105,106,107,108,109,109};
     char arrayName[10][51]= {"Brian","Oscar","Ale","Oliver Jake","Noah","Liam Mason","Jacob","James","Robert","	Robert"};
-    char arrayLastName[10][51]= {"Gonzales","Perez","Maradona","Johnson","Williams","Jones","Brown","Smith","Miller","Anderson"};
+    char arrayLastName[10][51]= {"Gonzales","Perez","Maradona","Johnson","Williams","Jones","Johnson","Smith","Miller","Anderson"};
     float arraySalary[10]= {11000,12000,13000,14000,15000,16000,17000,18000,19000,20000};
     int arraySector[10]= {10,15,10,15,10,15,10,10,15,10};
     int arrayIsEmpty[10]= {0,0,0,0,0,0,0,0,0,0};
 
 
     int i ;
-    for(i=0; i<len; i++)
+    for(i=0; i<10; i++)
     {
         listEmploye[i].id=arrayId[i];
         strcpy(listEmploye[i].name,arrayName[i]);

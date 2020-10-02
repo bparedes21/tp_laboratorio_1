@@ -3,7 +3,7 @@
 #include <string.h>
 #include "Array_de_Employee.h"
 #include "Otras_Funciones.h"
-#define LEN 1000
+#define LEN 15
 #define TRUE 1
 #define FALSE 0
 /*El sistema deberá tener el siguiente menú de opciones:
@@ -39,12 +39,12 @@ int main()
     int contadorEmployee;
     int opcionOrder;
 
-    contadorEmployee=0;
+    contadorEmployee=10;
     nameIsChar=0;
-    contadorId=100;
+    contadorId=100; //para usar hardCodearPerfil(list) poner en 110
 
     initEmployees(list, LEN);
-    //hardCodearPerfil(list,LEN);
+    //hardCodearPerfil(list);
 
     do
     {
@@ -58,7 +58,9 @@ int main()
         {
         case 1://ALTAS: Se debe permitir ingresar un empleado calculando automáticamente el número
             contadorId++;
+
             newID=newId(list, LEN, contadorId);
+
             if(newID==-1)
             {
                 printf("No hay mas espacio para un nuevo ID \n");
@@ -147,7 +149,7 @@ int main()
             break;
 
         case 2://MODIFICAR: Se ingresará el Número de Id, permitiendo modificar: o Nombre o Apellido
-            printEmployees(list,LEN);
+            printEmployees(list,LEN,contadorEmployee);
             IdOpcion=getIntNumId("Ingresar numero de empleado para modificar\n",list, LEN);
 
             opcionNombreOApellido=getIntOpcion("Ingrese \n 1- para modificar *Nombre \n 2- para modificar *Apellido \n");
@@ -229,11 +231,11 @@ int main()
             break;
 
         case 3://BAJA: Se ingresará el Número de Id y se eliminará el empleado del sistema.
-            printEmployees(list,LEN);
+            printEmployees(list,LEN,contadorEmployee);
             IdOpcion=getIntNumId("Ingresar numero de empleado para eliminar el empleado del sistema\n",list, LEN);
             findEmployeeById(list,LEN,IdOpcion);
             removeEmployee(list, LEN, IdOpcion);
-            printEmployees(list,LEN);
+            printEmployees(list,LEN,contadorEmployee);
             contadorEmployee--;
             break;
 
@@ -247,7 +249,7 @@ int main()
                 opcionOrder=getIntOpcion("Ordenar alfabeticamente por Apellido y Sector \nIngrese una opcion para ordenar: \n 1-Manera ascendente:\n 2-Manera descendente:\n");
                 // 1. Listado de los empleados ordenados alfabéticamente por Apellido y Sector.
                 sortEmployees(list, LEN, opcionOrder);
-                printEmployees(list,LEN);
+                printEmployees(list,LEN,contadorEmployee);
                 break;
 
             case 2:
